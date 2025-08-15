@@ -1,5 +1,6 @@
 <?php
 // Arquivo de conexão com o banco de dados MySQL usando PDO
+$host = 'localhost'; 
 $user = 'root';
 $pass = 'Home@spSENAI2025!';
 $db = 'smartroute';
