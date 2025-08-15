@@ -98,6 +98,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['nome'], $_POST['ender
         <input type='hidden' name='concluir_id' value='" . $row['id'] . "' />
         <button type='submit' class='concluir-btn'>Concluir</button>
       </form>";
+          echo "<form method='post' style='display:inline;'>
+        <input type='hidden' name='remover_id' value='" . $row['id'] . "' />
+        <button type='submit' class='remover-btn' onclick=\"return confirm('Tem certeza que deseja excluir esta entrega?')\">Remover</button>
+      </form>";
+
           echo '</div>';
           echo '</div>';
         }
@@ -116,6 +121,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['nome'], $_POST['ender
         header("Location: " . $_SERVER['PHP_SELF']);
         exit;
       }
+
+      // Lógica para remover entrega
+      if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['remover_id'])) {
+        $idRemover = intval($_POST['remover_id']);
+        $stmt = $conn->prepare("DELETE FROM entregas WHERE id=?");
+        $stmt->bind_param("i", $idRemover);
+        $stmt->execute();
+        $stmt->close();
+        // Atualiza a página para refletir a alteração
+        header("Location: " . $_SERVER['PHP_SELF']);
+        exit;
+      }
+
+
       ?>
     </div>
 
@@ -157,6 +176,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['nome'], $_POST['ender
       localStorage.setItem('entregaSelecionada', JSON.stringify(entrega));
       window.location.href = 'rotas.html';
     }
+    
   </script>
 </body>
 
