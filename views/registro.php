@@ -50,12 +50,12 @@
                 <input type="password" name="registroSenha2" id="registroSenha2" placeholder="Confirme a senha" required>
                 <button type="submit">Registrar</button>
                 <div class="register-link">
-                    Já tem conta? <a href="index.html">Entrar</a>
+                    Já tem conta? <a href="index.php">Entrar</a>
                 </div>
                 <?php if (!empty($erro)): ?>
                     <div style="color:red; margin-top:10px;"> <?= $erro ?> </div>
                 <?php elseif ($sucesso): ?>
-                    <div style="color:green; margin-top:10px;"> Usuário cadastrado com sucesso! <a href="index.html">Clique para entrar</a></div>
+                    <div style="color:green; margin-top:10px;"> Usuário cadastrado com sucesso! <a href="index.php">Clique para entrar</a></div>
                 <?php endif; ?>
             </form>
         </div>
