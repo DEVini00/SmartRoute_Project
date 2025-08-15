@@ -92,7 +92,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['nome'], $_POST['ender
             'lng' => $row['lng']
           ]), ENT_QUOTES, 'UTF-8');
 
-          echo '<div class="card-actions">';
+           echo '<div class="card-actions">';
           echo "<button class='rota-btn' onclick='abrirRota($dadosEntrega)'>Ver Rota</button>";
           echo "<form method='post' style='display:inline; flex:1;'>
         <input type='hidden' name='concluir_id' value='" . $row['id'] . "' />
